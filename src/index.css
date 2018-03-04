@@ -91,3 +91,8 @@ body {
 .--disabled{
     text-decoration: line-through;
 }
+
+.todo-item__name--disabled {
+    text-decoration: line-through;
+    
+}

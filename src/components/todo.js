@@ -23,6 +23,7 @@ class Form extends React.Component {
                 text: this.state.todoValue,
                 done: false,
             }
+
             this.setState({
                 todoValue: "",
                 todos: [todo, ...this.state.todos]
@@ -32,10 +33,19 @@ class Form extends React.Component {
 
     handleToggle = (id) => {
         this.setState((prevState) => {
-            todos : prevState.todos.map(item => {
-                item.id == id ? item.done = !item.done : item.done;
-            })
-        })
+            return {
+                todos: prevState.todos.map((item, i) => {
+                    if (item.id === id) {
+                        return {
+                            ...item,
+                            done: !prevState.todos[i].done,
+                        };
+                    }
+
+                    return item;
+                })
+            };
+        });
     }
 
     render() {
@@ -50,7 +60,7 @@ class Form extends React.Component {
     }
 }
 
-class Todo extends React.Component {
+class Todo extends React.PureComponent {
     render() {
         return (
             <ul className="todos-list">
@@ -58,6 +68,7 @@ class Todo extends React.Component {
                 this.props.todo.map((item) => {
                     return (
                         <li className="todo-item" key={item.id} onClick={() => this.props.handleToggle(item.id)}>
+                            {console.log('render')}
                             <span className={item.done ? "todo-item__name--disabled" : "todo-item__name"}>{item.text}</span>
                             <span className="todo-item__delete-button">×</span>
                         </li>
