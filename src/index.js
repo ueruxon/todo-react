@@ -4,6 +4,7 @@ import './index.css';
 import Header from './components/header.js';
 import Footer from './components/footer.js';
 import Todo from './components/todo.js';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class App extends React.Component {
     constructor(props) {
@@ -98,3 +99,4 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App/>, document.getElementById("todo"))
+
