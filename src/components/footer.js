@@ -1,20 +1,30 @@
 import React from 'react';
 
 class Footer extends React.Component {
+    
+    isActive = (text) => {
+        let filter = this.props.filter === text ? "active" : "";
+        return `footer__button ${filter}`
+    }
+
     render() {
         return (
             <footer className="footer">
-                <Button className="--active" text="All"  />
-                <Button className="" text="Active" />
-                <Button className="" text="Complited" />
-                <Button className="delete-all" text="Delete completed"  />
+                <Button className={this.isActive}  text="All" setActiveFilter={this.props.setActiveFilter} />
+                <Button className={this.isActive} text="Active" setActiveFilter={this.props.setActiveFilter}/>
+                <Button className={this.isActive}  text="Complited" setActiveFilter={this.props.setActiveFilter}/>
+                <ButtonDelete className={"footer__button"} deleteCompleted={this.props.deleteCompleted} text="Delete completed"  />
             </footer>
         )
     }
 }
 
-const Button = ({className, text}) => {
-    return <button className={`footer__button ${className}`}>{text}</button>
+const ButtonDelete = ({text, className, deleteCompleted}) => {
+    return <button className={`${className} delete-completed`} onClick={() => deleteCompleted()}>{text}</button>
+}
+
+const Button = ({className, text, setActiveFilter}) => {
+    return <button className={className(text)} onClick={() => setActiveFilter(text)}>{text}</button>
 }
 
 export default Footer;

@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,700&subset=cyrillic,cyrillic-ext');
+@import url(https://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+
 body {
-    font-family: sans-serif;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 300;
     background: linear-gradient(
         to right, 
       papayawhip 0%, 
@@ -14,8 +18,10 @@ body {
 
 .header {
     text-align: center;
+    color: #43494e;
+    font-family: 'quicksand';
+    font-weight: 300;
 }
-
 
 .form__input {
     background: transparent;
@@ -59,6 +65,7 @@ body {
 }
 
 .footer__button {
+    font-family: 'quicksand';
     background: transparent;
     border: 2px solid black;
     border-radius: 5px;
@@ -76,18 +83,18 @@ body {
     box-shadow: 0 0 2px black;
 }
 
-.delete-all {
+.delete-completed {
     float: right;
     margin-right: 0;
 }
 
-.--active {
+.active {
     border: 2px solid black;
     box-sizing: border-box;
     box-shadow: 0 0 2px black;
     font-weight: bold;
 }
 
-.--disabled{
+.disabled{
     text-decoration: line-through;
 }
